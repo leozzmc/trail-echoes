@@ -1,8 +1,8 @@
 # Unreal Engine generated directories
-game/Binaries/
-game/DerivedDataCache/
-game/Intermediate/
-game/Saved/
+game/**/Binaries/
+game/**/DerivedDataCache/
+game/**/Intermediate/
+game/**/Saved/
 
 # IDE-generated files
 .vscode/
