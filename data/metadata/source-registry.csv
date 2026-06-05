@@ -1,4 +1,5 @@
 source_id,type,title,author,url,license,download_date,usage_scope,notes
+GPX-001,gpx,Hehuan East Peak reference track,Hikingbook user activity,<HIKINGBOOK_SOURCE_PAGE>,unknown,<DOWNLOAD_DATE>,local-reference-only,Downloaded locally for QGIS and Greybox reference; do not redistribute raw GPX
 DEM-001,dem,Hehuan East Peak DEM,,,,,prototype,Source pending confirmation
 GPX-001,gpx,Hehuan East Peak trail track,,,,,prototype,Track pending collection
 PHOTO-001,photo,Hehuan East Peak reference photos,Kevin Liu,,personal,,reference-only,Personal hiking photos
