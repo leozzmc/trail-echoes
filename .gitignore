@@ -30,6 +30,9 @@ data/gis/raw/
 .DS_Store
 Thumbs.db
 
+# GDAL-generated sidecar metadata
+*.aux.xml
+
 # Temporary files
 *.tmp
 *.log
