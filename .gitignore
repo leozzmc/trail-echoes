@@ -22,6 +22,10 @@ dist/
 # Local-only externally sourced GPX files
 data/gpx/local/
 
+# Local-only GIS downloads
+data/gis/local/
+data/gis/raw/
+
 # OS files
 .DS_Store
 Thumbs.db
