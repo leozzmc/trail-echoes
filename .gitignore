@@ -19,6 +19,9 @@ dist/
 .env
 .env.*
 
+# Local-only externally sourced GPX files
+data/gpx/local/
+
 # OS files
 .DS_Store
 Thumbs.db
