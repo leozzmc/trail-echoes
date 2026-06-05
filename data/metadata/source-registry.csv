@@ -1,1 +1,5 @@
 source_id,type,title,author,url,license,download_date,usage_scope,notes
+DEM-001,dem,Hehuan East Peak DEM,,,,,prototype,Source pending confirmation
+GPX-001,gpx,Hehuan East Peak trail track,,,,,prototype,Track pending collection
+PHOTO-001,photo,Hehuan East Peak reference photos,Kevin Liu,,personal,,reference-only,Personal hiking photos
+HIST-001,historical-doc,Hehuan ski field historical sources,,,,,reference-only,Research pending
