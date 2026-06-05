@@ -1,0 +1,66 @@
+name: Feature
+description: Add a new gameplay, tooling, or infrastructure feature
+title: "Feature: "
+labels:
+  - Feature
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for new implementation work.
+
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What problem should this issue solve?
+      placeholder: Describe the desired outcome.
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What should be implemented?
+      placeholder: |
+        - Add ...
+        - Update ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: Out of Scope
+      description: What should explicitly not be implemented in this issue?
+      placeholder: |
+        - Do not add ...
+        - Do not refactor ...
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: Define verifiable completion criteria.
+      placeholder: |
+        - [ ] Criterion 1
+        - [ ] Criterion 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: test-plan
+    attributes:
+      label: Test Plan
+      description: How should the implementation be verified?
+      placeholder: |
+        1. Open ...
+        2. Confirm ...
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: List blocked-by or related issues.
+      placeholder: "Blocked by #..."

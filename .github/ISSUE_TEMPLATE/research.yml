@@ -1,0 +1,42 @@
+name: Research
+description: Investigate an external source, technical approach, or design question
+title: "Research: "
+labels:
+  - Research
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for GPX, GIS, historical-source, licensing, or technical investigation tasks.
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Research Question
+      description: What needs to be confirmed?
+      placeholder: Describe the question to answer.
+    validations:
+      required: true
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      placeholder: |
+        - [ ] Document source URL
+        - [ ] Record license
+        - [ ] Add file under data/...
+        - [ ] Update source-registry.csv
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: Include licensing, data quality, or implementation constraints.
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
