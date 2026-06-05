@@ -1,0 +1,41 @@
+name: Data
+description: Add or transform GIS, GPX, metadata, or other project data
+title: "Data: "
+labels:
+  - Data
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      placeholder: What data should be added or transformed?
+    validations:
+      required: true
+
+  - type: textarea
+    id: input
+    attributes:
+      label: Input Data
+      placeholder: Describe the input files and source registry entries.
+    validations:
+      required: true
+
+  - type: textarea
+    id: output
+    attributes:
+      label: Expected Output
+      placeholder: |
+        - File path:
+        - Format:
+        - Resolution:
+        - Coordinate system:
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      placeholder: How should the generated data be checked?
+    validations:
+      required: true
