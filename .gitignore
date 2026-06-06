@@ -26,6 +26,10 @@ data/gpx/local/
 data/gis/local/
 data/gis/raw/
 
+
+__pycache__/
+*.pyc
+
 # OS files
 .DS_Store
 Thumbs.db

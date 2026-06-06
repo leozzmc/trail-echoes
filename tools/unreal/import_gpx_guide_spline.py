@@ -301,12 +301,73 @@ def get_spline_component(actor: unreal.Actor) -> unreal.SplineComponent:
 def try_enable_spline_debug_draw(spline: unreal.SplineComponent) -> None:
     """
     Enable editor debug rendering when supported by the current wrapper.
-    The guide still imports successfully if this optional property is absent.
+    This visualization is editor-facing only; it is not a gameplay trail mesh.
     """
     try:
         spline.set_editor_property("draw_debug", True)
     except Exception as error:
         log(f"Optional draw_debug property was not applied: {error}")
+
+
+def try_set_editor_property(
+    obj: unreal.Object,
+    candidate_names: tuple[str, ...],
+    value: object,
+) -> bool:
+    """
+    Set the first supported editor property name.
+
+    Property exposure can vary slightly across Unreal Python wrapper versions.
+    """
+    for property_name in candidate_names:
+        try:
+            obj.set_editor_property(property_name, value)
+            log(f"Applied {property_name}={value!r}")
+            return True
+        except Exception:
+            continue
+
+    log(
+        "Unable to apply optional editor property. Tried: "
+        + ", ".join(candidate_names)
+    )
+    return False
+
+
+def persist_spline_changes(
+    guide_actor: unreal.Actor,
+    spline: unreal.SplineComponent,
+) -> None:
+    """
+    Mark the edited placed-actor spline as an instance override and save the map.
+
+    Without this override, a Blueprint construction-script refresh can restore
+    the component defaults and discard imported spline points.
+    """
+    guide_actor.modify()
+    spline.modify()
+
+    try_set_editor_property(
+        spline,
+        (
+            "spline_has_been_edited",
+            "override_construction_script",
+        ),
+        True,
+    )
+
+    for obj, label in ((spline, "SplineComponent"), (guide_actor, "GuideActor")):
+        try:
+            obj.mark_package_dirty()
+            log(f"Marked {label} package dirty")
+        except Exception as error:
+            log(f"Optional mark_package_dirty failed for {label}: {error}")
+
+    try:
+        saved = unreal.EditorLoadingAndSavingUtils.save_current_level()
+        log(f"save_current_level returned: {saved}")
+    except Exception as error:
+        fail(f"Unable to save the current level: {error}")
 
 
 # ---------------------------------------------------------------------------
@@ -370,10 +431,12 @@ def main() -> None:
 
     spline.update_spline()
     try_enable_spline_debug_draw(spline)
+    persist_spline_changes(guide_actor, spline)
 
     log(f"Imported {len(route_points)} spline points")
+    log("Saved the current level with the placed-actor spline override")
     log("Select GPXTrailGuide in the Outliner and press F to inspect the route")
-    log("Use File -> Save All after visual verification")
+    log("The editor spline debug view is not a runtime gameplay trail")
 
 
 if __name__ == "__main__":
